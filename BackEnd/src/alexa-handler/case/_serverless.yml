@@ -1,0 +1,4 @@
+alexa-case:
+  handler: src/alexa-handler/case/index.handler
+  events:
+    - alexaSkill

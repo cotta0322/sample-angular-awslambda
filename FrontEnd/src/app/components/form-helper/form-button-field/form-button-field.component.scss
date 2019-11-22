@@ -1,0 +1,14 @@
+div {
+    margin-top: 5px;
+    text-align: center;
+    div {
+        display: inline-block;
+        max-width: 600px;
+        width: 100%;
+        text-align: right;
+        div {
+            display: flex;
+            justify-content: space-evenly
+        }
+    }
+}

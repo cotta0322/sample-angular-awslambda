@@ -1,0 +1,35 @@
+Resources:
+  GeneralUserInfo:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: GeneralUserInfo
+      AttributeDefinitions:
+        -
+          AttributeName: companyCode
+          AttributeType: S
+        -
+          AttributeName: mail
+          AttributeType: S
+        -
+          AttributeName: accountId
+          AttributeType: S
+      KeySchema:
+        -
+          AttributeName: companyCode
+          KeyType: HASH
+        -
+          AttributeName: mail
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: GeneralUserCompanyCodeIndex
+          KeySchema:
+          - AttributeName: accountId
+            KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

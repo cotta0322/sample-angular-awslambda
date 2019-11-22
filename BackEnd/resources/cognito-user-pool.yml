@@ -1,0 +1,67 @@
+Resources:
+  CognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      # Generate a name based on the stage
+      UserPoolName: sfa-user-pool
+      # Set email as an alias
+      UsernameAttributes:
+        - email
+      AdminCreateUserConfig:
+          AllowAdminCreateUserOnly: true
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 6
+          RequireLowercase: false
+          RequireNumbers: false
+          RequireSymbols: false
+          RequireUppercase: false
+          TemporaryPasswordValidityDays: 7
+
+  CognitoUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      # Generate an app client name based on the stage
+      ClientName: sfa-user-pool-client
+      UserPoolId:
+        Ref: CognitoUserPool
+      ExplicitAuthFlows:
+        - ADMIN_NO_SRP_AUTH
+      GenerateSecret: false
+
+  CognitoUserPoolClientAlexa:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      # Generate an app client name based on the stage
+      ClientName: sfa-user-pool-client-alexa
+      UserPoolId:
+        Ref: CognitoUserPool
+      ExplicitAuthFlows:
+        - ADMIN_NO_SRP_AUTH
+      GenerateSecret: true
+
+  ApiGatewayAuthorizer:
+    DependsOn:
+      - ApiGatewayRestApi
+    Type: AWS::ApiGateway::Authorizer
+    Properties:
+      Name: ApiGatewayAuthorizer
+      IdentitySource: method.request.header.Authorization
+      RestApiId:
+        Ref: ApiGatewayRestApi
+      Type: COGNITO_USER_POOLS
+      ProviderARNs:
+        - Fn::GetAtt: [CognitoUserPool, Arn]
+
+# Print out the Id of the User Pool that is created
+Outputs:
+  UserPoolId:
+    Value:
+      Ref: CognitoUserPool
+
+  UserPoolArn:
+    Value: !GetAtt CognitoUserPool.Arn
+
+  UserPoolClientId:
+    Value:
+      Ref: CognitoUserPoolClient

@@ -1,0 +1,60 @@
+<div class="top">
+    <form class="login-page" [formGroup]="form" (submit)="login()">
+        <mat-card class="login-card">
+            <mat-card-header>
+                <mat-card-title class="login-title">{{ title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="login-form">
+                    <mat-error *ngIf="(error$ | async) !== ''">{{(error$ | async)}}</mat-error>
+                    <mat-form-field>
+                        <input formControlName="mail" #email matInput placeholder="メールアドレス" autocomplete="off" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input
+                            formControlName="password"
+                            #password
+                            matInput
+                            type="password"
+                            placeholder="パスワード"
+                            autocomplete="off"
+                        />
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" type="submit">ログイン</button>
+                    <button
+                        class="login-form-sub"
+                        mat-button
+                        color="primary"
+                        routerLink="/admin-login/sign-up"
+                        type="button"
+                        *ngIf="(appMode$ | async) === 'admin'"
+                    >
+                        管理者アカウントを作成する
+                    </button>
+                    <button
+                        class="login-form-sub"
+                        mat-button
+                        color="primary"
+                        routerLink="/login"
+                        type="button"
+                        *ngIf="(appMode$ | async) === 'admin'"
+                    >
+                        企業会員IDでログインする
+                    </button>
+                    <button
+                        class="login-form-sub"
+                        mat-button
+                        color="primary"
+                        routerLink="/admin-login"
+                        type="button"
+                        *ngIf="(appMode$ | async) === 'general'"
+                    >
+                        管理者アカウントでログインする
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</div>

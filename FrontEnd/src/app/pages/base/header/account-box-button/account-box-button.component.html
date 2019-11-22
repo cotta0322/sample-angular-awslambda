@@ -1,0 +1,7 @@
+<button mat-icon-button>
+    <mat-icon [matMenuTriggerFor]="level1">account_box</mat-icon>
+</button>
+
+<mat-menu #level1="matMenu">
+    <button mat-menu-item (click)="toChangePassword()">パスワード変更</button>
+</mat-menu>

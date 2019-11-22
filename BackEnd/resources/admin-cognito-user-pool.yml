@@ -1,0 +1,56 @@
+Resources:
+  AdminCognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      # Generate a name based on the stage
+      UserPoolName: sfa-admin-user-pool
+      # Set email as an alias
+      UsernameAttributes:
+        - email
+      AutoVerifiedAttributes:
+        - email
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 6
+          RequireLowercase: false
+          RequireNumbers: false
+          RequireSymbols: false
+          RequireUppercase: false
+          TemporaryPasswordValidityDays: 7
+
+  AdminCognitoUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      # Generate an app client name based on the stage
+      ClientName: sfa-admin-user-pool-client
+      UserPoolId:
+        Ref: AdminCognitoUserPool
+      ExplicitAuthFlows:
+        - ADMIN_NO_SRP_AUTH
+      GenerateSecret: false
+
+  adminApiGatewayAuthorizer:
+    DependsOn:
+      - ApiGatewayRestApi
+    Type: AWS::ApiGateway::Authorizer
+    Properties:
+      Name: adminApiGatewayAuthorizer
+      IdentitySource: method.request.header.Authorization
+      RestApiId:
+        Ref: ApiGatewayRestApi
+      Type: COGNITO_USER_POOLS
+      ProviderARNs:
+        - Fn::GetAtt: [AdminCognitoUserPool, Arn]
+
+# Print out the Id of the User Pool that is created
+Outputs:
+  AdminUserPoolId:
+    Value:
+      Ref: AdminCognitoUserPool
+
+  AdminUserPoolArn:
+    Value: !GetAtt AdminCognitoUserPool.Arn
+
+  AdminUserPoolClientId:
+    Value:
+      Ref: AdminCognitoUserPoolClient

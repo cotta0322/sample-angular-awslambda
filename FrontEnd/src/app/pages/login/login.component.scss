@@ -1,0 +1,30 @@
+.top {
+    display: table;
+    width: 100%;
+    height: calc(100% - 200px);
+    .login-page {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        .login-form-sub {
+            width: 100%;
+            text-align: left;
+        }
+        .login-card {
+            width: 300px;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-title {
+    font-weight: bold;
+    font-size: 22px;
+    color: #3f51b5;
+}

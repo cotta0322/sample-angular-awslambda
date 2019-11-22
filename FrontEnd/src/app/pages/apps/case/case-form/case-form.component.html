@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<form [formGroup]="form" (submit)="submit()">
+    <div mat-dialog-content class="dialog-content">
+        <mat-form-field>
+            <input matInput placeholder="案件/商談名" autocomplete="off" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="顧客名" autocomplete="off" formControlName="customerName" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="発生日" autocomplete="off" formControlName="accrualDate" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="次回予定日" autocomplete="off" formControlName="nextDate" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="当社担当者" autocomplete="off" formControlName="salesPerson" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="カテゴリ" autocomplete="off" formControlName="category" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="内容" autocomplete="off" formControlName="content" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="進捗状況" autocomplete="off" formControlName="progress" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="商品名" autocomplete="off" formControlName="productName" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="受注（予定）金額" autocomplete="off" formControlName="scheduledOrderAmount" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="受注（予定）日" autocomplete="off" formControlName="scheduledOrderDay" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="競合他社" autocomplete="off" formControlName="competitors" />
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="button">
+        <button mat-primary-button mat-raised-button color="primary" (click)="cancel()" type="button">キャンセル</button>
+        <button mat-primary-button mat-raised-button color="primary" type="submit">作成</button>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+<div class="top">
+    <div class="sign-up-form">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title class="title">サインアップ</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form class="form" [formGroup]="form" (submit)="signup()">
+                    <mat-error>{{errorMessage}}</mat-error>
+                    <mat-form-field>
+                        <input #email matInput placeholder="メールアドレス" formControlName="mail" autocomplete="new-password" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input
+                            #password
+                            matInput
+                            type="password"
+                            placeholder="パスワード"
+                            formControlName="password1"
+                            autocomplete="new-password"
+                        />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input
+                            matInput
+                            type="password"
+                            placeholder="パスワード（確認）"
+                            formControlName="password2"
+                            autocomplete="new-password"
+                        />
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" type="submit">
+                        サインアップ
+                    </button>
+                    <ng-content></ng-content>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

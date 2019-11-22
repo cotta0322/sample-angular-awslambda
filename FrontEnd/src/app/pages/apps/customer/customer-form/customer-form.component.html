@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<form [formGroup]="form" (submit)="submit()">
+    <div mat-dialog-content class="dialog-content">
+        <mat-form-field>
+            <input matInput placeholder="名前" autocomplete="off" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="ナマエ" autocomplete="off" formControlName="kana" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="郵便番号" autocomplete="off" formControlName="postalCode" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="住所" autocomplete="off" formControlName="address" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="電話番号" autocomplete="off" formControlName="phoneNumber" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="FAX番号" autocomplete="off" formControlName="faxNumber" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="代表者役職者名" autocomplete="off" formControlName="representativePosition" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="代表者氏名" autocomplete="off" formControlName="representative" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="HPアドレス" autocomplete="off" formControlName="websiteUrl" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="業種" autocomplete="off" formControlName="industry" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="法人個人区分" autocomplete="off" formControlName="corporateType" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="法人個人番号" autocomplete="off" formControlName="corporateNumber" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="社員数" autocomplete="off" formControlName="employeeNumber" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="年商" autocomplete="off" formControlName="annualSales" />
+        </mat-form-field>
+        <mat-form-field>
+                <input matInput placeholder="資本金" autocomplete="off" formControlName="capital" />
+            </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="button">
+        <button mat-primary-button mat-raised-button color="primary" (click)="cancel()" type="button">キャンセル</button>
+        <button mat-primary-button mat-raised-button color="primary" type="submit">作成</button>
+    </div>
+</form>

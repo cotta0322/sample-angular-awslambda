@@ -1,0 +1,23 @@
+company:
+  handler: src/handler/company/index.handler
+  events:
+    - http:
+        method: post
+        path: api/company/
+        cors: true
+        authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: adminApiGatewayAuthorizer
+
+company_general:
+  handler: src/handler/company/index.handler_general
+  events:
+    - http:
+        method: post
+        path: api/company/general/
+        cors: true
+        authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer

@@ -1,0 +1,14 @@
+<mat-form-field>
+    <input matInput placeholder="検索" autocomplete="off" (input)="updateFilterString($event)" />
+</mat-form-field>
+
+<div class="title">表示データ</div>
+<div class="check-list">
+    <ng-container *ngFor="let columnInfo of columnsInfo">
+        <div *ngIf="columnInfo.controlShow">
+            <mat-checkbox (click)="checkChange(columnInfo.id)" [checked]="(columnsToDisplay$ | async)[columnInfo.id]"
+                >{{columnInfo.label}}</mat-checkbox
+            >
+        </div>
+    </ng-container>
+</div>

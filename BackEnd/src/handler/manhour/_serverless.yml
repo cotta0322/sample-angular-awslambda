@@ -1,0 +1,11 @@
+manhour:
+  handler: src/handler/manhour/index.handler
+  events:
+    - http:
+        method: post
+        path: api/manhour/
+        cors: true
+        authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer

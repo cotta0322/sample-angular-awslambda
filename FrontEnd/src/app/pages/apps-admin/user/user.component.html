@@ -1,0 +1,65 @@
+<div class="buttons">
+    <div class="filter-button-field">
+        <mat-form-field>
+            <input matInput placeholder="検索" autocomplete="off" (input)="updateFilterString($event)" />
+        </mat-form-field>
+    </div>
+    <span class="spacer"></span>
+    <div class="action-button-field">
+        <button mat-raised-button (click)="delete()" [disabled]="selection.selected.length === 0" color="primary">
+            削除
+        </button>
+        <button mat-raised-button (click)="updateDialog()" [disabled]="selection.selected.length !== 1" color="primary">
+            編集
+        </button>
+        <button mat-raised-button (click)="createDialog()" color="primary">新規</button>
+    </div>
+</div>
+
+<div class="table-area">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox
+                    (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()"
+                >
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox
+                    (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)"
+                >
+                </mat-checkbox>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="updateDate">
+            <th mat-header-cell *matHeaderCellDef>更新時間</th>
+            <td mat-cell *matCellDef="let element">{{ element.updateDate | toUpdateDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mail">
+            <th mat-header-cell *matHeaderCellDef>メールアドレス</th>
+            <td mat-cell *matCellDef="let element">{{ element.mail }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>氏名</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="kana">
+            <th mat-header-cell *matHeaderCellDef>氏名（かな）</th>
+            <td mat-cell *matCellDef="let element">{{ element.kana }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></tr>
+    </table>
+</div>

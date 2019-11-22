@@ -1,0 +1,15 @@
+<form [formGroup]="form" (submit)="save()">
+    <app-form-item-field>
+        <mat-form-field>
+            <input matInput placeholder="会社名" autocomplete="off" formControlName="name"/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="会社名（カナ）" autocomplete="off" formControlName="kana"/>
+        </mat-form-field>
+    </app-form-item-field>
+
+    <app-form-button-field>
+        <button mat-raised-button color="primary" type="submit">登録</button>
+    </app-form-button-field>
+</form>

@@ -1,0 +1,11 @@
+customer:
+  handler: src/handler/customer/index.handler
+  events:
+    - http:
+        method: post
+        path: api/customer/
+        cors: true
+        authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer

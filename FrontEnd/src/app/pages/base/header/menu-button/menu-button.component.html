@@ -1,0 +1,9 @@
+<button mat-icon-button [matMenuTriggerFor]="level1">
+    <mat-icon>menu</mat-icon>
+</button>
+
+<mat-menu #level1="matMenu">
+    <ng-container *ngFor="let menu of (menuData$ | async ); index as i">
+        <button mat-menu-item *ngIf="!menu.child" (click)="selectMenu(menu.url, menu.name)">{{ menu.name }}</button>
+    </ng-container>
+</mat-menu>

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="base">
+    <mat-toolbar-row>
+        <app-menu-button></app-menu-button>
+        <button mat-icon-button (click)="toHome()">
+            <mat-icon>home</mat-icon>
+        </button>
+        <span class="company-name">{{ selectedMenu$ | async }}</span>
+        <span class="example-spacer"></span>
+        <span class="company-name">{{ companyName$ | async }}</span>
+        <app-account-box-button></app-account-box-button>
+        <button mat-icon-button (click)="doLogout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>

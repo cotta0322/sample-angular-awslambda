@@ -1,0 +1,22 @@
+Resources:
+  ManhourInfo:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: ManhourInfo
+      AttributeDefinitions:
+        -
+          AttributeName: accountId
+          AttributeType: S
+        -
+          AttributeName: id
+          AttributeType: N
+      KeySchema:
+        -
+          AttributeName: accountId
+          KeyType: HASH
+        -
+          AttributeName: id
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

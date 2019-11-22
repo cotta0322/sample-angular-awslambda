@@ -1,0 +1,11 @@
+case:
+  handler: src/handler/case/index.handler
+  events:
+    - http:
+        method: post
+        path: api/case/
+        cors: true
+        authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer

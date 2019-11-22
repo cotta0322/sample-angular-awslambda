@@ -1,0 +1,12 @@
+{
+    "editor.renderWhitespace": "all",
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 120,
+    "prettier.singleQuote": true,
+    "files.exclude": {
+        "**/.build": true,
+        "**/.serverless": true,
+        "**/.vscode": true,
+        "design": true
+    }
+}

@@ -1,0 +1,22 @@
+Resources:
+  CustomerInfo:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: CustomerInfo
+      AttributeDefinitions:
+        -
+          AttributeName: companyCode
+          AttributeType: S
+        -
+          AttributeName: id
+          AttributeType: N
+      KeySchema:
+        -
+          AttributeName: companyCode
+          KeyType: HASH
+        -
+          AttributeName: id
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

@@ -1,0 +1,40 @@
+Resources:
+  # DynamoDBの構築
+  AdminUserCompany:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      # テーブル名の指定
+      TableName: AdminUserCompany
+      # キーの型を指定
+      AttributeDefinitions:
+        -
+          AttributeName: accountId
+          AttributeType: S
+      # キーの種類を指定（ハッシュorレンジキー）
+      KeySchema:
+        -
+          AttributeName: accountId
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+  # DynamoDBの構築
+  SelfCompanyInfo:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      # テーブル名の指定
+      TableName: SelfCompanyInfo
+      # キーの型を指定
+      AttributeDefinitions:
+        -
+          AttributeName: companyCode
+          AttributeType: S
+      # キーの種類を指定（ハッシュorレンジキー）
+      KeySchema:
+        -
+          AttributeName: companyCode
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

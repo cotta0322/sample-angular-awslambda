@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<form [formGroup]="form" (submit)="submit()">
+    <div mat-dialog-content class="dialog-content">
+        <mat-form-field>
+            <input matInput placeholder="顧客名称" autocomplete="off" formControlName="customerName" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="案件／商談名" autocomplete="off" formControlName="caseName" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="発生日" autocomplete="off" formControlName="accrualDate" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="工種" autocomplete="off" formControlName="workType" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="備考" autocomplete="off" formControlName="remarks" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="工数" autocomplete="off" formControlName="manhour" />
+        </mat-form-field>
+
+    </div>
+
+    <div mat-dialog-actions class="button">
+        <button mat-primary-button mat-raised-button color="primary" (click)="cancel()" type="button">キャンセル</button>
+        <button mat-primary-button mat-raised-button color="primary" type="submit">作成</button>
+    </div>
+</form>

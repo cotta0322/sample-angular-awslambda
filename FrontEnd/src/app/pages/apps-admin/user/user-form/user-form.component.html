@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<form [formGroup]="form" (submit)="submit()">
+    <div mat-dialog-content class="dialog-content">
+        <mat-form-field>
+            <input #email matInput placeholder="メールアドレス" autocomplete="off" formControlName="mail"/>
+        </mat-form-field>
+        <mat-form-field>
+            <input #name matInput placeholder="氏名" autocomplete="off" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+            <input #kana matInput placeholder="氏名（かな）" autocomplete="off" formControlName="kana" />
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="button">
+        <button mat-primary-button mat-raised-button color="primary" (click)="cancel()" type="button">キャンセル</button>
+        <button mat-primary-button mat-raised-button color="primary" type="submit">作成</button>
+    </div>
+</form>
