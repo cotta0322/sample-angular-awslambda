@@ -6,7 +6,7 @@
 <div class="check-list">
     <ng-container *ngFor="let columnInfo of columnsInfo">
         <div *ngIf="columnInfo.controlShow">
-            <mat-checkbox (click)="checkChange(columnInfo.id)" [checked]="(columnsToDisplay$ | async)[columnInfo.id]"
+            <mat-checkbox (click)="checkChange(columnInfo.id)" [checked]="$any(columnsToDisplay$ | async)[columnInfo.id]"
                 >{{columnInfo.label}}</mat-checkbox
             >
         </div>
