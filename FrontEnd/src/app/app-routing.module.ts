@@ -14,7 +14,7 @@ const routes: Routes = [
     },
     {
         path: 'admin-base',
-        loadChildren: () => import('./pages/base/admin-base.module').then(module => module.AdminBaseModule),
+        loadChildren: () => import('./pages/base/base.module').then(module => module.BaseModule),
         canActivate: [AdminAuthGuard]
     },
     {
