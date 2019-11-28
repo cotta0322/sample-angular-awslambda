@@ -17,7 +17,7 @@ export class FilterFormComponent implements OnInit {
     ngOnInit() {}
 
     updateFilterString(event: any) {
-        this.customerStoreFacade.updateFilterString(event.data === null ? '' : event.data);
+        this.customerStoreFacade.updateFilterString(event.target.val === null ? '' : event.target.value);
     }
 
     checkChange(column: ColumnKeyType) {

@@ -21,6 +21,7 @@ export class CaseComponent implements OnInit {
     selection = new SelectionModel<CaseState.Case>(true, []);
     enableFilter$ = this.caseStoreFacade.enableFilter$;
     columnsToDisplay: string[] = [];
+    filterString$ = this.caseStoreFacade.filterString$;
 
     constructor(private dialog: MatDialog, private caseStoreFacade: CaseStoreFacade) { }
 
