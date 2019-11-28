@@ -9,6 +9,7 @@
                 <button mat-stroked-button (click)="openFilter()" *ngIf="!(enableFilter$ | async)" id="filter-open-button"><mat-icon>chevron_right</mat-icon></button>
                 <button mat-stroked-button (click)="closeFilter()" *ngIf="enableFilter$ | async" id="filter-close-button"><mat-icon>chevron_left</mat-icon></button>
             </div>
+            <span *ngIf="(filterString$ | async)" class="filter-string">Filter String： {{(filterString$ | async)}}</span>
             <span class="spacer"></span>
             <div class="action-button-field">
                 <button mat-raised-button (click)="delete()" [disabled]="selection.selected.length === 0" color="primary">
